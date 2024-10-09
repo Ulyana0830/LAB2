@@ -1,15 +1,23 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        StopWatch stopwatch = new StopWatch(); int[] array = new int[100000]; java.util.Random random = new
+                java.util.Random();
+        for (int i = 0; i < array.length; i++) {
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+            array[i] = random.nextInt(100000);
         }
+        stopwatch.start(); selectionSort(array); stopwatch.stop();
+        System.out.println("Время выполнения сортировки: " + stopwatch.getElapsedTime() + " миллисекунд");
+    }
+
+    public static void selectionSort(int[] array) { for (int i = 0; i < array.length - 1; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j < array.length; j++)
+        {
+            if (array[j] < array[minIndex]) { minIndex = j;
+            }
+        }
+        int temp = array[minIndex]; array[minIndex] = array[i]; array[i] = temp;
+    }
     }
 }
